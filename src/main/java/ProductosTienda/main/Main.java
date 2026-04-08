@@ -25,14 +25,31 @@ public class Main {
             } while (codigo.trim().isEmpty());
 
             System.out.print("Nombre: ");
-            scanner.nextLine(); 
+            scanner.nextLine();
             String nombre = scanner.nextLine();
 
-            System.out.print("Precio: ");
-            float precio = scanner.nextFloat();
+            float precio = -1;
+            do {
+                System.out.print("Precio: ");
+                while (!scanner.hasNextFloat()) {
+                    System.out.println("Error: Ingrese un precio válido.");
+                    scanner.next();
+                }
+                precio = scanner.nextFloat();
+                if (precio < 0) System.out.println("El precio no puede ser negativo.");
+            } while (precio < 0);
 
-            System.out.print("Cantidad: ");
-            int cantidad = scanner.nextInt();
+
+            int cantidad = -1;
+            do {
+                System.out.print("Cantidad en stock: ");
+                while (!scanner.hasNextInt()) {
+                    System.out.println("Error: Ingrese un número entero.");
+                    scanner.next();
+                }
+                cantidad = scanner.nextInt();
+                if (cantidad < 0) System.out.println("La cantidad no puede ser negativa.");
+            } while (cantidad < 0);
 
             Producto prod = new Producto(codigo, nombre, precio, cantidad);
 
@@ -48,9 +65,9 @@ public class Main {
             valorTotalInventario += montoProducto;
         }
 
-        System.out.println("\n========================================");
+        System.out.println("\n");
         System.out.println("VALOR TOTAL DEL INVENTARIO: " + valorTotalInventario);
-        System.out.println("========================================");
+        System.out.println("");
 
         scanner.close();
     }
