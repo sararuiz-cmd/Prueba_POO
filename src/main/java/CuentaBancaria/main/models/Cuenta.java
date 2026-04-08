@@ -34,15 +34,17 @@ public class Cuenta {
         return getSaldo();
     }
     public void depositar(double monto){
-        if (monto<0){
-            System.out.println("No se permiten saldos negativos");
+        if (monto<=0){
+            JOptionPane.showMessageDialog(null,"No se permiten saldos negativos");
         }else {
             saldo+=monto;
         }
     }
     public double retirar(double monto) {
-        if (monto > saldo) {
-            System.out.println("Por favor, ingrese un monto menor al saldo");
+        if (monto <= 0) {
+            JOptionPane.showMessageDialog(null,"El monto debe ser mayor que 0");
+        } else if (monto > saldo) {
+            JOptionPane.showMessageDialog(null,"Por favor, ingrese un monto menor al saldo");
         } else {
             saldo -= monto;
         }
