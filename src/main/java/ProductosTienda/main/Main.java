@@ -8,7 +8,7 @@ public class Main {
         int n = 0;
         do {
             System.out.print("Ingrese la cantidad de productos a registrar: ");
-            while (!scanner.hasNextInt()) { // Valida que sea un número
+            while (!scanner.hasNextInt()) {
                 System.out.println("Error: Debe ingresar un número entero.");
                 scanner.next();
             }
@@ -18,12 +18,14 @@ public class Main {
 
         for (int i = 1; i <= n; i++) {
             System.out.println("\n--- Registro del Producto #" + i + " ---");
-
-            System.out.print("Código: ");
-            String codigo = scanner.next();
+            String codigo;
+            do {
+                System.out.print("Código: ");
+                codigo = scanner.next();
+            } while (codigo.trim().isEmpty());
 
             System.out.print("Nombre: ");
-            scanner.nextLine(); // Limpiar el buffer
+            scanner.nextLine(); 
             String nombre = scanner.nextLine();
 
             System.out.print("Precio: ");

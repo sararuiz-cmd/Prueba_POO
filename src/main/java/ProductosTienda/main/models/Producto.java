@@ -16,7 +16,6 @@ public class Producto {
     }
 
 
-
     public String mostrarProducto() {
         return "Código: " + codigo + ", Nombre: " + nombre +
                 ", Precio: " + precio + ", Cantidad: " + cantidad;
